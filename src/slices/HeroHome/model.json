@@ -1,0 +1,56 @@
+{
+  "id": "hero_home",
+  "type": "SharedSlice",
+  "name": "HeroHome",
+  "description": "HeroHome",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "first_label": {
+          "type": "Text",
+          "config": {
+            "label": "First Label",
+            "placeholder": ""
+          }
+        },
+        "second_label": {
+          "type": "Text",
+          "config": {
+            "label": "Second Label",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}

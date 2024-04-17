@@ -1,20 +1,32 @@
 {
-  "name": "prismic-webflow",
+  "name": "kirby-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sync": "npx webflow devlink sync",
+    "dev": "concurrently \"npm:next:dev\" \"npm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
+    "next:dev": "next",
+    "dev-next": "next dev",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "^7.4.0",
+    "@prismicio/next": "^1.5.0",
+    "@prismicio/react": "^2.7.4",
+    "@webflow/webflow-cli": "^1.6.9",
+    "axios": "^1.6.8",
+    "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.4"
+    "concurrently": "*"
   },
   "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.38",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.1.4",
+    "slice-machine-ui": "^1.26.0"
   }
 }

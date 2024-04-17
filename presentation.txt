@@ -1,0 +1,69 @@
+% Habits
+% John Doe
+% March 22, 2005
+
+# In the morning
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Breakfast
+
+- Eat eggs
+- Drink coffee
+
+# In the evening
+
+## Dinner
+
+- Eat spaghetti
+- Drink wine
+
+------------------
+
+![picture of spaghetti](images/spaghetti.jpg)
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
+
+Outline presentatie
+
+- Creative coding -> een intro slide maken die dan helemaal fancy is. 
+
+- Maar dan zoals creatief boekhouden. Genoeg van code gebruik maken zodat er precies iets uit komt wat je wil. 
+
+- Dus helaas, vandaag niet; dit zijn de 12 tips om typografie op basis van je viewport schaalbaar te maken met variable fonts
+    maar eerder - low effort - high reward. Met als doel meer richting de interactieve installaties
+    En ook eerder: 15 plakbandtips voor rapid prototyping?
+
+- Een klein greepje uit waar ik me momenteeel mee bezig houdt
+    Ik heb na CMD 5 jaar bij Wetteloos gewerkt, het creative onderdeel van Elastique. Daar voor klanten gewerkt als Beeld en Geluid, WNF en Air Miles?
+        Kun je laten zien waar beeld en geluid op is gebouwd , dat dat nog steeds een spreadsheet is? (Plakbanden)
+
+
+    
+
+
+
+
+
+
+- de presentatie die ik had gewild tijdens CMD minor?
+
+Ik heb de minor gedaan vanwege moneys
+maar wat het bracht is een soort basis toolbox waar ik nog steeds gebruik van maak. (E-readers?!?!?!?!)
+    om uit eindelijk medium agnostisch te worden. 
+
+    aan de hand van een aantal projecten
+
+    Watik het leukste vindt, waar ik goed in ben = uitzoeken van techniek om een bepaald doel te kunnen bereiken. Prototyping meister?
+
+
+
+
+Welk framework moet ik leren!>??!?!?
+

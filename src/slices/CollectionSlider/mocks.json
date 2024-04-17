@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "written",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "fifteen",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "cool",
+				"type": "Text"
+			},
+			"linked_plants": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			}
+		},
+		"items": []
+	}
+]
