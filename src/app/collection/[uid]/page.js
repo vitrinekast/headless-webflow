@@ -31,7 +31,7 @@ export default async function Page({ params }) {
         )]
     })
         .catch(() => notFound());
-    console.log(plants)
+    
 
 
     return <>
@@ -45,7 +45,6 @@ export default async function Page({ params }) {
             collectionListPlantsSlot={
                 <>
                     {plants.length && plants.map((plant, index) => {
-                        console.log(plant.url)
                         return <CardPlant key={index} title={plant.data.title} image={plant.data.thumbnail.url} link={{ href: plant.url }} />
                     })}
                 </>

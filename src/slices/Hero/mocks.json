@@ -50,16 +50,16 @@
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "cta",
+		"variation": "simpler",
 		"primary": {
 			"title": {
 				"__TYPE__": "FieldContent",
-				"value": "equal",
+				"value": "give",
 				"type": "Text"
 			},
 			"description": {
 				"__TYPE__": "FieldContent",
-				"value": "twice",
+				"value": "species",
 				"type": "Text"
 			},
 			"link": {
@@ -71,7 +71,7 @@
 			},
 			"link_label": {
 				"__TYPE__": "FieldContent",
-				"value": "tried",
+				"value": "chose",
 				"type": "Text"
 			}
 		},

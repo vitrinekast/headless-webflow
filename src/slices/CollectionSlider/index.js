@@ -10,7 +10,7 @@ const CollectionSlider = ({ slice }) => {
   const client = createClient();
 
   const plantIDs = [];
-  console.log(slice)
+  
   // console.log(slice.items);
   // slice.items.forEach((item) => {
   //   plantIDs.push(item.plant.id);

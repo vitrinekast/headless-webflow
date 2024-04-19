@@ -17,6 +17,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "slider": {
+              "type": "SharedSlice"
+            },
+            "hero_home": {
+              "type": "SharedSlice"
+            },
             "collection_slider": {
               "type": "SharedSlice"
             },

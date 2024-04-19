@@ -329,7 +329,11 @@ export type MainNavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = CollectionSliderSlice | ContentCtaSlice;
+type PageDocumentDataSlicesSlice =
+  | SliderSlice
+  | HeroHomeSlice
+  | CollectionSliderSlice
+  | ContentCtaSlice;
 
 /**
  * Content for Page documents
@@ -1002,7 +1006,7 @@ export type HeroHomeSliceDefault = prismic.SharedSliceVariation<
 /**
  * Primary content in *Hero → Primary*
  */
-export interface HeroHomeSliceCtaPrimary {
+export interface HeroHomeSliceSimplerPrimary {
   /**
    * Title field in *Hero → Primary*
    *
@@ -1047,20 +1051,20 @@ export interface HeroHomeSliceCtaPrimary {
 /**
  * simpler variation for Hero Slice
  *
- * - **API ID**: `cta`
+ * - **API ID**: `simpler`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HeroHomeSliceCta = prismic.SharedSliceVariation<
-  "cta",
-  Simplify<HeroHomeSliceCtaPrimary>,
+export type HeroHomeSliceSimpler = prismic.SharedSliceVariation<
+  "simpler",
+  Simplify<HeroHomeSliceSimplerPrimary>,
   never
 >;
 
 /**
  * Slice variation for *Hero*
  */
-type HeroHomeSliceVariation = HeroHomeSliceDefault | HeroHomeSliceCta;
+type HeroHomeSliceVariation = HeroHomeSliceDefault | HeroHomeSliceSimpler;
 
 /**
  * Hero Shared Slice
@@ -1349,10 +1353,10 @@ declare module "@prismicio/client" {
       HeroHomeSlice,
       HeroHomeSliceDefaultPrimary,
       HeroHomeSliceDefaultItem,
-      HeroHomeSliceCtaPrimary,
+      HeroHomeSliceSimplerPrimary,
       HeroHomeSliceVariation,
       HeroHomeSliceDefault,
-      HeroHomeSliceCta,
+      HeroHomeSliceSimpler,
       SliderSlice,
       SliderSliceDefaultItem,
       SliderSliceHistoryItem,

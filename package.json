@@ -16,12 +16,13 @@
     "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",
+    "@splidejs/splide": "^4.1.4",
     "@webflow/webflow-cli": "^1.6.9",
     "axios": "^1.6.8",
+    "concurrently": "*",
     "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18",
-    "concurrently": "*"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.38",
