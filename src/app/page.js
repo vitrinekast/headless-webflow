@@ -12,7 +12,9 @@ export default async function Home() {
   const client = createClient();
 
   const menu = await client.getSingle("main_navigation");
-  const home = await client.getSingle("home");
+  const home = await client.getSingle("home", {
+    fetchLinks: "slices.items"
+  });
 
   const plants = await client.getAllByType('plant')
 
@@ -20,7 +22,6 @@ export default async function Home() {
     <>
      
       <main>
-
         <SliceZone slices={home.data.slices} components={components} />
       </main>
     </>

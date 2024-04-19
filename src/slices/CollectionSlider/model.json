@@ -32,16 +32,20 @@
             "label": "Description",
             "placeholder": ""
           }
-        },
-        "linked_plants": {
-          "type": "Link",
-          "config": {
-            "label": "Linked plants",
-            "select": "document"
-          }
         }
       },
-      "items": {}
+      "items": {
+        "plant": {
+          "type": "Link",
+          "config": {
+            "label": "plant",
+            "select": "document",
+            "customtypes": [
+              "plant"
+            ]
+          }
+        }
+      }
     }
   ]
 }

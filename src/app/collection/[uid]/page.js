@@ -1,5 +1,7 @@
 import { notFound } from "next/navigation";
 import { SliceZone } from "@prismicio/react";
+import * as prismic from '@prismicio/client'
+
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
@@ -9,27 +11,42 @@ import { CardPlant } from "../../../../devlink";
 
 export default async function Page({ params }) {
     const client = createClient();
-    const page = await client
-        .getByUID("collection", params.uid, {
-            fetchLinks: "plants.thumbnail",
-        })
+
+
+
+
+    const page = await client.getByUID("collection", params.uid, {
+        graphQuery: `{
+            collection {
+                title
+                description
+            }
+    }`
+    }).catch(() => notFound());
+
+    const plants = await client.getAllByType("plant", {
+        filters: [prismic.filter.at(
+            'my.plant.collection',
+            page.id
+        )]
+    })
         .catch(() => notFound());
-    
-    const plants = await client
-        .getAllByIDs(page.data.plants.map((plant) => plant.plant.id))
-        .catch(() => notFound());
-    
+    console.log(plants)
+
+
     return <>
         <CollectionDetails
             title={page.data.title}
             subtitle={"collection"}
-            description={page.data.description}
+            description={page.data.description.text}
         />
+
         <CollectionListPlants
-            gridPlantsSlot={
+            collectionListPlantsSlot={
                 <>
-                    {plants.map((plant, index) => {
-                        return <CardPlant key={index} title={plant.data.title} thumbnail={plant.data.thumbnail.url} key={index} />
+                    {plants.length && plants.map((plant, index) => {
+                        console.log(plant.url)
+                        return <CardPlant key={index} title={plant.data.title} image={plant.data.thumbnail.url} link={{ href: plant.url }} />
                     })}
                 </>
             }

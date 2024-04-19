@@ -329,6 +329,67 @@ export type MainNavigationDocument<Lang extends string = string> =
     Lang
   >;
 
+type PageDocumentDataSlicesSlice = CollectionSliderSlice | ContentCtaSlice;
+
+/**
+ * Content for Page documents
+ */
+interface PageDocumentData {
+  /**
+   * Slice Zone field in *Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
+   * Meta Description field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Page document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
 /**
  * Item in *plant → images*
  */
@@ -487,6 +548,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | HomeDocument
   | MainNavigationDocument
+  | PageDocument
   | PlantDocument;
 
 /**
@@ -522,16 +584,21 @@ export interface CollectionSliderSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   description: prismic.KeyTextField;
+}
 
+/**
+ * Primary content in *CollectionSlider → Items*
+ */
+export interface CollectionSliderSliceDefaultItem {
   /**
-   * Linked plants field in *CollectionSlider → Primary*
+   * plant field in *CollectionSlider → Items*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: collection_slider.primary.linked_plants
+   * - **API ID Path**: collection_slider.items[].plant
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  linked_plants: prismic.ContentRelationshipField;
+  plant: prismic.ContentRelationshipField<"plant">;
 }
 
 /**
@@ -544,7 +611,7 @@ export interface CollectionSliderSliceDefaultPrimary {
 export type CollectionSliderSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<CollectionSliderSliceDefaultPrimary>,
-  never
+  Simplify<CollectionSliderSliceDefaultItem>
 >;
 
 /**
@@ -778,6 +845,9 @@ declare module "@prismicio/client" {
       MainNavigationDocument,
       MainNavigationDocumentData,
       MainNavigationDocumentDataMenuItemsItem,
+      PageDocument,
+      PageDocumentData,
+      PageDocumentDataSlicesSlice,
       PlantDocument,
       PlantDocumentData,
       PlantDocumentDataImagesItem,
@@ -785,6 +855,7 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       CollectionSliderSlice,
       CollectionSliderSliceDefaultPrimary,
+      CollectionSliderSliceDefaultItem,
       CollectionSliderSliceVariation,
       CollectionSliderSliceDefault,
       ContentCtaSlice,

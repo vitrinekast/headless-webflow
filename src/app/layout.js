@@ -17,14 +17,14 @@ export default async function RootLayout({ children }) {
 
   const menu = await client.getSingle("main_navigation");
   const footer = await client.getSingle("footer");
-  
+
   return (
     <html lang="en">
       <body>
 
         <Navbar navbarLeftSlot={
           menu.data.menu_items.map((link, index) => (
-            <NavbarLink key={index} label={link.label} link={link.link.url}>
+            <NavbarLink key={index} label={link.label} link={{ href: link.link.url }}>
             </NavbarLink>
           ))
         }></Navbar>
@@ -33,16 +33,15 @@ export default async function RootLayout({ children }) {
 
         <Footer
           footerMenuLegalSlot={
-            footer.data.legal_links.map((link, index) => (
-              <FooterLinkLegal key={index} label={link.label} link={link.link.url}>
+            footer.data.legal_links.map((link, index) => {
+              return <FooterLinkLegal key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLinkLegal>
-            ))
+            })
           }
 
           footerMenuSlot={
             footer.data.links.map((link, index) => {
-              console.log(link.link.url);
-              return <FooterLink key={index} label={link.label} link={link.link.url}>
+              return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLink>
             })
           } meta={"add me to the cms"} />
