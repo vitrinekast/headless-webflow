@@ -1,7 +1,7 @@
 {
   "id": "hero_home",
   "type": "SharedSlice",
-  "name": "HeroHome",
+  "name": "Hero",
   "description": "HeroHome",
   "variations": [
     {
@@ -51,6 +51,46 @@
           }
         }
       }
+    },
+    {
+      "id": "cta",
+      "name": "simpler",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "link_label": {
+          "type": "Text",
+          "config": {
+            "label": "link label",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

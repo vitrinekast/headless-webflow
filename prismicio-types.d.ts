@@ -584,21 +584,16 @@ export interface CollectionSliderSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   description: prismic.KeyTextField;
-}
 
-/**
- * Primary content in *CollectionSlider → Items*
- */
-export interface CollectionSliderSliceDefaultItem {
   /**
-   * plant field in *CollectionSlider → Items*
+   * collection field in *CollectionSlider → Primary*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: collection_slider.items[].plant
+   * - **API ID Path**: collection_slider.primary.collection
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  plant: prismic.ContentRelationshipField<"plant">;
+  collection: prismic.ContentRelationshipField<"collection">;
 }
 
 /**
@@ -611,13 +606,132 @@ export interface CollectionSliderSliceDefaultItem {
 export type CollectionSliderSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<CollectionSliderSliceDefaultPrimary>,
-  Simplify<CollectionSliderSliceDefaultItem>
+  never
+>;
+
+/**
+ * Primary content in *CollectionSlider → Primary*
+ */
+export interface CollectionSliderSliceDuoPrimary {
+  /**
+   * Subtitle field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * title field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * collection field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.collection
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  collection: prismic.ContentRelationshipField<"collection">;
+}
+
+/**
+ * Duo variation for CollectionSlider Slice
+ *
+ * - **API ID**: `duo`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollectionSliderSliceDuo = prismic.SharedSliceVariation<
+  "duo",
+  Simplify<CollectionSliderSliceDuoPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *CollectionSlider → Primary*
+ */
+export interface CollectionSliderSliceLightPrimary {
+  /**
+   * Subtitle field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * title field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * collection field in *CollectionSlider → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: collection_slider.primary.collection
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  collection: prismic.ContentRelationshipField<"collection">;
+}
+
+/**
+ * Light variation for CollectionSlider Slice
+ *
+ * - **API ID**: `light`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CollectionSliderSliceLight = prismic.SharedSliceVariation<
+  "light",
+  Simplify<CollectionSliderSliceLightPrimary>,
+  never
 >;
 
 /**
  * Slice variation for *CollectionSlider*
  */
-type CollectionSliderSliceVariation = CollectionSliderSliceDefault;
+type CollectionSliderSliceVariation =
+  | CollectionSliderSliceDefault
+  | CollectionSliderSliceDuo
+  | CollectionSliderSliceLight;
 
 /**
  * CollectionSlider Shared Slice
@@ -632,11 +746,11 @@ export type CollectionSliderSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ContentCta → Primary*
+ * Primary content in *Content → Primary*
  */
 export interface ContentCtaSliceDefaultPrimary {
   /**
-   * Title field in *ContentCta → Primary*
+   * Title field in *Content → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -646,7 +760,7 @@ export interface ContentCtaSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Subtitle field in *ContentCta → Primary*
+   * Subtitle field in *Content → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -656,7 +770,7 @@ export interface ContentCtaSliceDefaultPrimary {
   subtitle: prismic.KeyTextField;
 
   /**
-   * Description field in *ContentCta → Primary*
+   * Description field in *Content → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -667,11 +781,11 @@ export interface ContentCtaSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *ContentCta → Items*
+ * Primary content in *Content → Items*
  */
 export interface ContentCtaSliceDefaultItem {
   /**
-   * Button Link field in *ContentCta → Items*
+   * Button Link field in *Content → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -681,7 +795,7 @@ export interface ContentCtaSliceDefaultItem {
   button_link: prismic.LinkField;
 
   /**
-   * Button Label field in *ContentCta → Items*
+   * Button Label field in *Content → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -691,7 +805,7 @@ export interface ContentCtaSliceDefaultItem {
   button_label: prismic.KeyTextField;
 
   /**
-   * Button is secondary field in *ContentCta → Items*
+   * Button is secondary field in *Content → Items*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
@@ -703,7 +817,7 @@ export interface ContentCtaSliceDefaultItem {
 }
 
 /**
- * Default variation for ContentCta Slice
+ * Default variation for Content Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -716,12 +830,92 @@ export type ContentCtaSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *ContentCta*
+ * Primary content in *Content → Primary*
  */
-type ContentCtaSliceVariation = ContentCtaSliceDefault;
+export interface ContentCtaSliceSplitVisualPrimary {
+  /**
+   * Title field in *Content → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *Content → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Description field in *Content → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * image field in *Content → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link label field in *Content → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.link_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label: prismic.KeyTextField;
+
+  /**
+   * link field in *Content → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_cta.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
 
 /**
- * ContentCta Shared Slice
+ * split visual variation for Content Slice
+ *
+ * - **API ID**: `splitVisual`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentCtaSliceSplitVisual = prismic.SharedSliceVariation<
+  "splitVisual",
+  Simplify<ContentCtaSliceSplitVisualPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Content*
+ */
+type ContentCtaSliceVariation =
+  | ContentCtaSliceDefault
+  | ContentCtaSliceSplitVisual;
+
+/**
+ * Content Shared Slice
  *
  * - **API ID**: `content_cta`
  * - **Description**: ContentCta
@@ -733,11 +927,11 @@ export type ContentCtaSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *HeroHome → Primary*
+ * Primary content in *Hero → Primary*
  */
 export interface HeroHomeSliceDefaultPrimary {
   /**
-   * Title field in *HeroHome → Primary*
+   * Title field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -747,7 +941,7 @@ export interface HeroHomeSliceDefaultPrimary {
   title: prismic.KeyTextField;
 
   /**
-   * Description field in *HeroHome → Primary*
+   * Description field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -758,11 +952,11 @@ export interface HeroHomeSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *HeroHome → Items*
+ * Primary content in *Hero → Items*
  */
 export interface HeroHomeSliceDefaultItem {
   /**
-   * Link field in *HeroHome → Items*
+   * Link field in *Hero → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -772,7 +966,7 @@ export interface HeroHomeSliceDefaultItem {
   link: prismic.LinkField;
 
   /**
-   * First Label field in *HeroHome → Items*
+   * First Label field in *Hero → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -782,7 +976,7 @@ export interface HeroHomeSliceDefaultItem {
   first_label: prismic.KeyTextField;
 
   /**
-   * Second Label field in *HeroHome → Items*
+   * Second Label field in *Hero → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -793,7 +987,7 @@ export interface HeroHomeSliceDefaultItem {
 }
 
 /**
- * Default variation for HeroHome Slice
+ * Default variation for Hero Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -806,12 +1000,70 @@ export type HeroHomeSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *HeroHome*
+ * Primary content in *Hero → Primary*
  */
-type HeroHomeSliceVariation = HeroHomeSliceDefault;
+export interface HeroHomeSliceCtaPrimary {
+  /**
+   * Title field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_home.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_home.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * link field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_home.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * link label field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_home.primary.link_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label: prismic.KeyTextField;
+}
 
 /**
- * HeroHome Shared Slice
+ * simpler variation for Hero Slice
+ *
+ * - **API ID**: `cta`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroHomeSliceCta = prismic.SharedSliceVariation<
+  "cta",
+  Simplify<HeroHomeSliceCtaPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroHomeSliceVariation = HeroHomeSliceDefault | HeroHomeSliceCta;
+
+/**
+ * Hero Shared Slice
  *
  * - **API ID**: `hero_home`
  * - **Description**: HeroHome
@@ -821,6 +1073,232 @@ export type HeroHomeSlice = prismic.SharedSlice<
   "hero_home",
   HeroHomeSliceVariation
 >;
+
+/**
+ * Primary content in *Slider → Items*
+ */
+export interface SliderSliceDefaultItem {
+  /**
+   * title field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * body field in *Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * image field in *Slider → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link field in *Slider → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * link label field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].link_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Slider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<SliderSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *Slider → Items*
+ */
+export interface SliderSliceHistoryItem {
+  /**
+   * body field in *Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * image field in *Slider → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * year field in *Slider → Items*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].year
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  year: prismic.NumberField;
+}
+
+/**
+ * history variation for Slider Slice
+ *
+ * - **API ID**: `history`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSliceHistory = prismic.SharedSliceVariation<
+  "history",
+  Record<string, never>,
+  Simplify<SliderSliceHistoryItem>
+>;
+
+/**
+ * Primary content in *Slider → Primary*
+ */
+export interface SliderSliceDarkPrimary {
+  /**
+   * title field in *Slider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * subtitle field in *Slider → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Slider → Items*
+ */
+export interface SliderSliceDarkItem {
+  /**
+   * title field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * body field in *Slider → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * image field in *Slider → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * link field in *Slider → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * link label field in *Slider → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slider.items[].link_label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_label: prismic.KeyTextField;
+}
+
+/**
+ * Dark variation for Slider Slice
+ *
+ * - **API ID**: `dark`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSliceDark = prismic.SharedSliceVariation<
+  "dark",
+  Simplify<SliderSliceDarkPrimary>,
+  Simplify<SliderSliceDarkItem>
+>;
+
+/**
+ * Slice variation for *Slider*
+ */
+type SliderSliceVariation =
+  | SliderSliceDefault
+  | SliderSliceHistory
+  | SliderSliceDark;
+
+/**
+ * Slider Shared Slice
+ *
+ * - **API ID**: `slider`
+ * - **Description**: Slider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SliderSlice = prismic.SharedSlice<"slider", SliderSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -855,19 +1333,35 @@ declare module "@prismicio/client" {
       AllDocumentTypes,
       CollectionSliderSlice,
       CollectionSliderSliceDefaultPrimary,
-      CollectionSliderSliceDefaultItem,
+      CollectionSliderSliceDuoPrimary,
+      CollectionSliderSliceLightPrimary,
       CollectionSliderSliceVariation,
       CollectionSliderSliceDefault,
+      CollectionSliderSliceDuo,
+      CollectionSliderSliceLight,
       ContentCtaSlice,
       ContentCtaSliceDefaultPrimary,
       ContentCtaSliceDefaultItem,
+      ContentCtaSliceSplitVisualPrimary,
       ContentCtaSliceVariation,
       ContentCtaSliceDefault,
+      ContentCtaSliceSplitVisual,
       HeroHomeSlice,
       HeroHomeSliceDefaultPrimary,
       HeroHomeSliceDefaultItem,
+      HeroHomeSliceCtaPrimary,
       HeroHomeSliceVariation,
       HeroHomeSliceDefault,
+      HeroHomeSliceCta,
+      SliderSlice,
+      SliderSliceDefaultItem,
+      SliderSliceHistoryItem,
+      SliderSliceDarkPrimary,
+      SliderSliceDarkItem,
+      SliderSliceVariation,
+      SliderSliceDefault,
+      SliderSliceHistory,
+      SliderSliceDark,
     };
   }
 }

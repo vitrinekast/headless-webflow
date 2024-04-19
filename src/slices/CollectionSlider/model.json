@@ -32,20 +32,103 @@
             "label": "Description",
             "placeholder": ""
           }
-        }
-      },
-      "items": {
-        "plant": {
+        },
+        "collection": {
           "type": "Link",
           "config": {
-            "label": "plant",
+            "label": "collection",
             "select": "document",
             "customtypes": [
-              "plant"
+              "collection"
             ]
           }
         }
-      }
+      },
+      "items": {}
+    },
+    {
+      "id": "duo",
+      "name": "Duo",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "collection": {
+          "type": "Link",
+          "config": {
+            "label": "collection",
+            "select": "document",
+            "customtypes": [
+              "collection"
+            ]
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "collection": {
+          "type": "Link",
+          "config": {
+            "label": "collection",
+            "select": "document",
+            "customtypes": [
+              "collection"
+            ]
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
