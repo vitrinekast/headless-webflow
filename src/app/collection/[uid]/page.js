@@ -12,9 +12,6 @@ import { CardPlant } from "../../../../devlink";
 export default async function Page({ params }) {
     const client = createClient();
 
-
-
-
     const page = await client.getByUID("collection", params.uid, {
         graphQuery: `{
             collection {
@@ -42,7 +39,7 @@ export default async function Page({ params }) {
         />
 
         <CollectionListPlants
-            collectionListPlantsSlot={
+            plantsSlot={
                 <>
                     {plants.length && plants.map((plant, index) => {
                         return <CardPlant key={index} title={plant.data.title} image={plant.data.thumbnail.url} link={{ href: plant.url }} />

@@ -1,11 +1,10 @@
-import { notFound } from "next/navigation";
-import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { Map } from "../../../devlink/Map";
-import { Partners } from "../../../devlink/Partners";
+import { SliceZone } from "@prismicio/react";
+import { SectionMap, SectionPartners } from "../../../devlink";
 import { Cta } from "../../../devlink/Cta";
 
+const client = createClient();
 
 export async function generateMetadata() {
 
@@ -27,15 +26,43 @@ export async function generateMetadata() {
     };
 }
 
+async function getData() {
+
+    // return await client.getByUID("page", "about-us").catch(() => notFound());
+
+    return await client.getByUID("page", "about-us", {
+        graphQuery: `
+          {
+            page {
+              slices {
+                ...on slider {
+                  variation {
+                    ...on default {
+                      primary {
+                        ...primaryFields
+                      }
+                      items {
+                        ...itemsFields
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `
+    })
+
+}
+
 
 export default async function Page() {
-    const client = createClient();
-    const page = await client.getByUID("page", "about-us").catch(() => notFound());
-
+    const page = await getData();
+    
     return <>
-    <SliceZone slices={page.data.slices} components={components} />
-    <Map />
-    <Partners />
-    <Cta />
+        <SliceZone slices={page.data.slices} components={components} />
+        <SectionMap />
+        <SectionPartners />
+        <Cta />
     </>;
 }

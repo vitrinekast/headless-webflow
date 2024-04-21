@@ -28,7 +28,5 @@ export async function generateMetadata() {
 export default async function Page() {
     const client = createClient();
     const page = await client.getByUID("page", "career").catch(() => notFound());
-    console.log(page);
-
     return <SliceZone slices={page.data.slices} components={components} />;
 }

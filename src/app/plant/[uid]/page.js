@@ -23,7 +23,7 @@ export default async function Page({ params }) {
             thumbnail={page.data.thumbnail.url}
         />
         <PlantGallery
-            plantGallerySlot={page.data.images.map((image, index) => {
+            gallerySlot={page.data.images.map((image, index) => {
                 return <img src={image.image.url} key={index} />
                 // <PrismicNextImage field={data.images.image} />
 

@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
 
-        <Navbar navbarLeftSlot={
+        <Navbar leftSlot={
           menu.data.menu_items.map((link, index) => (
             <NavbarLink key={index} label={link.label} link={{ href: link.link.url }}>
             </NavbarLink>
@@ -32,14 +32,14 @@ export default async function RootLayout({ children }) {
         <PrismicPreview repositoryName={repositoryName} />
 
         <Footer
-          footerMenuLegalSlot={
+          menuLegalSlot={
             footer.data.legal_links.map((link, index) => {
               return <FooterLinkLegal key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLinkLegal>
             })
           }
 
-          footerMenuSlot={
+          menuSlot={
             footer.data.links.map((link, index) => {
               return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLink>

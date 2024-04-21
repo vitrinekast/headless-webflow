@@ -1,4 +1,4 @@
-import { Button, SectionContentCta } from "../../../devlink";
+import { Button, SectionContent } from "../../../devlink";
 
 /**
  * @typedef {import("@prismicio/client").Content.ContentCtaSlice} ContentCtaSlice
@@ -8,7 +8,7 @@ import { Button, SectionContentCta } from "../../../devlink";
 
 const ContentCta = ({ slice }) => {
   return (
-    <SectionContentCta
+    <SectionContent
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       title={slice.primary.title}
