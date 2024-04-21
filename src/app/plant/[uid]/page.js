@@ -3,9 +3,9 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import { PlantDetails } from "../../../../devlink/PlantDetails";
-import { PlantGallery } from "../../../../devlink/PlantGallery";
-import { PlantGalleryItem } from "../../../../devlink/PlantGalleryItem";
+import { PlantDetails } from "../~/devlink/PlantDetails";
+import { PlantGallery } from "../~/devlink/PlantGallery";
+import { PlantGalleryItem } from "../~/devlink/PlantGalleryItem";
 
 export default async function Page({ params }) {
     const client = createClient();

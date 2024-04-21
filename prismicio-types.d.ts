@@ -91,110 +91,6 @@ export type CollectionDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *footer → links*
- */
-export interface FooterDocumentDataLinksItem {
-  /**
-   * link field in *footer → links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.links[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-
-  /**
-   * label field in *footer → links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.links[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-}
-
-/**
- * Item in *footer → legal links*
- */
-export interface FooterDocumentDataLegalLinksItem {
-  /**
-   * link field in *footer → legal links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.legal_links[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-
-  /**
-   * label field in *footer → legal links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.legal_links[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-}
-
-/**
- * Content for footer documents
- */
-interface FooterDocumentData {
-  /**
-   * links field in *footer*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.links[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  links: prismic.GroupField<Simplify<FooterDocumentDataLinksItem>>;
-
-  /**
-   * legal links field in *footer*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.legal_links[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  legal_links: prismic.GroupField<Simplify<FooterDocumentDataLegalLinksItem>>;
-
-  /**
-   * body field in *footer*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.body
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  body: prismic.RichTextField;
-}
-
-/**
- * footer document from Prismic
- *
- * - **API ID**: `footer`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type FooterDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<FooterDocumentData>,
-    "footer",
-    Lang
-  >;
-
 type HomeDocumentDataSlicesSlice =
   | ContentCtaSlice
   | HeroHomeSlice
@@ -271,11 +167,11 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
- * Item in *Main Navigation → Menu items*
+ * Item in *Navigation → Menu items*
  */
 export interface MainNavigationDocumentDataMenuItemsItem {
   /**
-   * Link field in *Main Navigation → Menu items*
+   * Link field in *Navigation → Menu items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -285,7 +181,7 @@ export interface MainNavigationDocumentDataMenuItemsItem {
   link: prismic.LinkField;
 
   /**
-   * Label field in *Main Navigation → Menu items*
+   * Label field in *Navigation → Menu items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -296,11 +192,61 @@ export interface MainNavigationDocumentDataMenuItemsItem {
 }
 
 /**
- * Content for Main Navigation documents
+ * Item in *Navigation → links*
+ */
+export interface MainNavigationDocumentDataLinksItem {
+  /**
+   * link field in *Navigation → links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * label field in *Navigation → links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.links[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Navigation → legal links*
+ */
+export interface MainNavigationDocumentDataLegalLinksItem {
+  /**
+   * link field in *Navigation → legal links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.legal_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * label field in *Navigation → legal links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.legal_links[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
+/**
+ * Content for Navigation documents
  */
 interface MainNavigationDocumentData {
   /**
-   * Menu items field in *Main Navigation*
+   * Menu items field in *Navigation*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -310,11 +256,44 @@ interface MainNavigationDocumentData {
    */
   menu_items: prismic.GroupField<
     Simplify<MainNavigationDocumentDataMenuItemsItem>
+  > /**
+   * links field in *Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.links[]
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */;
+  links: prismic.GroupField<Simplify<MainNavigationDocumentDataLinksItem>>;
+
+  /**
+   * legal links field in *Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.legal_links[]
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  legal_links: prismic.GroupField<
+    Simplify<MainNavigationDocumentDataLegalLinksItem>
   >;
+
+  /**
+   * body field in *Navigation*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: main_navigation.body
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
 }
 
 /**
- * Main Navigation document from Prismic
+ * Navigation document from Prismic
  *
  * - **API ID**: `main_navigation`
  * - **Repeatable**: `false`
@@ -339,6 +318,39 @@ type PageDocumentDataSlicesSlice =
  * Content for Page documents
  */
 interface PageDocumentData {
+  /**
+   * subtitle field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
   /**
    * Slice Zone field in *Page*
    *
@@ -549,7 +561,6 @@ export type PlantDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CollectionDocument
-  | FooterDocument
   | HomeDocument
   | MainNavigationDocument
   | PageDocument
@@ -1317,16 +1328,14 @@ declare module "@prismicio/client" {
       CollectionDocument,
       CollectionDocumentData,
       CollectionDocumentDataSlicesSlice,
-      FooterDocument,
-      FooterDocumentData,
-      FooterDocumentDataLinksItem,
-      FooterDocumentDataLegalLinksItem,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       MainNavigationDocument,
       MainNavigationDocumentData,
       MainNavigationDocumentDataMenuItemsItem,
+      MainNavigationDocumentDataLinksItem,
+      MainNavigationDocumentDataLegalLinksItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

@@ -1,4 +1,4 @@
-import { Button, SectionContent } from "../../../devlink";
+import { Button, SectionContent } from "~/devlink";
 
 /**
  * @typedef {import("@prismicio/client").Content.ContentCtaSlice} ContentCtaSlice
@@ -7,13 +7,12 @@ import { Button, SectionContent } from "../../../devlink";
  */
 
 const ContentCta = ({ slice }) => {
+  const { title, description, subtitle } = slice.primary;
   return (
     <SectionContent
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-      title={slice.primary.title}
-      description={slice.primary.description}
-      subtitle={slice.primary.subtitle}
+      title={title}
+      description={description}
+      subtitle={subtitle}
       buttonGroupSlot={
         slice.items.map((button, index) => (
           <Button

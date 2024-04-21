@@ -1,4 +1,4 @@
-import { HeroHome, HeroSimpler } from "../../../devlink";
+import { HeroHome, HeroSimpler } from "~/devlink";
 
 /**
  * @typedef {import("@prismicio/client").Content.HeroHomeSlice} HeroHomeSlice
@@ -6,11 +6,12 @@ import { HeroHome, HeroSimpler } from "../../../devlink";
  * @param {HeroHomeProps}
  */
 const HeroHomeSlice = ({ slice }) => {
-
+  const { title } = slice.primary;
+  
   if (slice.variation === "simpler") {
-    return <HeroSimpler title={slice.primary.title} data-slice-type={slice.slice_type} data-slice-variation={slice.variation} buttonsSlot={false} />
+    return <HeroSimpler title={title} buttonsSlot={false} />
   } else {
-    return <HeroHome title={slice.primary.title} data-slice-type={slice.slice_type} data-slice-variation={slice.variation} />
+    return <HeroHome title={title} />
   }
 };
 

@@ -16,7 +16,6 @@ export default async function RootLayout({ children }) {
   const client = createClient();
 
   const menu = await client.getSingle("main_navigation");
-  const footer = await client.getSingle("footer");
 
   return (
     <html lang="en">
@@ -33,14 +32,14 @@ export default async function RootLayout({ children }) {
 
         <Footer
           menuLegalSlot={
-            footer.data.legal_links.map((link, index) => {
+            menu.data.legal_links.map((link, index) => {
               return <FooterLinkLegal key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLinkLegal>
             })
           }
 
           menuSlot={
-            footer.data.links.map((link, index) => {
+            menu.data.links.map((link, index) => {
               return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}>
               </FooterLink>
             })

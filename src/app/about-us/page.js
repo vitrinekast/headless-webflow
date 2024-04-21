@@ -1,8 +1,8 @@
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
-import { SectionMap, SectionPartners } from "../../../devlink";
-import { Cta } from "../../../devlink/Cta";
+import { SectionMap, SectionPartners } from "~/devlink";
+import { Cta } from "~/devlink/Cta";
 
 const client = createClient();
 

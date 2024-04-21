@@ -1,46 +1,53 @@
 "use client";
 
 import Splide from '@splidejs/splide';
-import '@splidejs/splide/css';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import { useEffect, useRef } from 'react';
-import { CardPlant } from "../../../devlink";
-import { SectionCollectionSlider } from '../../../devlink/SectionCollectionSlider';
-/**
- * @typedef {import("@prismicio/client").Content.CollectionSliderSlice} CollectionSliderSlice
- * @typedef {import("@prismicio/react").SliceComponentProps<CollectionSliderSlice>} CollectionSliderProps
- * @param {CollectionSliderProps}
- */
+import { CardPlant, SectionCollectionSlider } from "~/devlink";
 
+import '@splidejs/splide/dist/css/splide-core.min.css';
 
-
-
-export default async function CollectionSlider({ slice }) {
+export default function CollectionSlider({ slice }) {
   const sliderRef = useRef(null);
-  let splideEl = false;
+  const { title, description, subtitle } = slice.primary;
 
   useEffect(() => {
-    if (sliderRef.current && !splideEl) {
-      splideEl = new Splide(sliderRef.current, {
-        perPage: 3,
-      }).mount();
+    if (sliderRef.current) {
+      new Splide(sliderRef.current, {
+        fixedWidth: "400px",
+        gap: "1.5rem",
+        arrows: false,
+        lazyLoad: "nearby",
+        type: "loop",
+        drag: "free",
+        start: 3,
+        snap: true,
+        wheel: false,
+        breakpoints: {
+          767: {
+            fixedWidth: "80vw",
+            focus: "center",
+          },
+        },
+        focus: 0,
+        autoScroll: {
+          pauseOnHover: false,
+          speed: 0.5,
+        },
+      }).mount({ AutoScroll });
     }
 
   }, [sliderRef])
   return (
 
     <SectionCollectionSlider
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-      subtitle={slice.primary.subtitle}
-      title={slice.primary.title}
-      description={slice.primary.description}
+      subtitle={subtitle}
+      title={title}
+      description={description}
       props={{ ref: sliderRef }}
-      sliderSlot={slice.plants.map((item, index) => {
-        const { title, thumbnail } = item.data;
-        return <CardPlant key={index} title={title} image={thumbnail.url} />
-      })}
-
-
+      sliderSlot={slice.plants.map((item, index) => (
+        <CardPlant key={index} title={item.data.title} image={item.datathumbnail.url} />
+      ))}
     />
 
   );

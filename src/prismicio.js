@@ -26,6 +26,10 @@ const routes = [
     path: "/about-us"
   },
   {
+    type: "page",
+    path: "/partners"
+  },
+  {
     type: "plant",
     path: "/plant/:uid",
   },
