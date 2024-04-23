@@ -40,8 +40,7 @@ export default async function RootLayout({ children }) {
 
           menuSlot={
             menu.data.links.map((link, index) => {
-              return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}>
-              </FooterLink>
+              return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}></FooterLink>
             })
           } meta={"add me to the cms"} />
       </body>

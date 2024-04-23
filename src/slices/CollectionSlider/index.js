@@ -46,7 +46,7 @@ export default function CollectionSlider({ slice }) {
       description={description}
       props={{ ref: sliderRef }}
       sliderSlot={slice.plants.map((item, index) => (
-        <CardPlant key={index} title={item.data.title} image={item.datathumbnail.url} />
+        <CardPlant key={index} title={item.data.title} image={item.data.thumbnail.url} />
       ))}
     />
 
