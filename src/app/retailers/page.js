@@ -1,6 +1,3 @@
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
 import { SectionMap, SectionPartners } from "~/devlink";
 import { Cta } from "~/devlink/Cta";
 
@@ -9,10 +6,12 @@ import { getClient } from "@/services/client";
 import { gql } from "@apollo/client";
 
 const query = gql`{
-  allEvent(sort: [{ name: ASC }]) {
-    name
+    Page( slug: "retailers" ) {
+      _id,
+      _slug
+      title
+    }
   }
-}
 `;
 
 

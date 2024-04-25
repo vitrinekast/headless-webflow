@@ -1,5 +1,5 @@
 {
-  "name": "kirby-app",
+  "name": "Webflow-Devlink-tests",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,24 +7,36 @@
     "start": "next start",
     "lint": "next lint",
     "sync": "npx webflow devlink sync",
-    "dev": "concurrently \"npm:next:dev\" \"npm:slicemachine\" --names \"next,slicemachine\" --prefix-colors blue,magenta",
+    "dev": "next dev",
     "next:dev": "next",
     "dev-next": "next dev",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "deploy-sanity": "sanity graphql deploy playground"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.11",
+    "@apollo/experimental-nextjs-app-support": "^0.10.0",
     "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",
+    "@sanity/assist": "^3.0.3",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.38.0",
     "@splidejs/splide": "^4.1.4",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@webflow/webflow-cli": "^1.6.9",
     "axios": "^1.6.8",
     "concurrently": "*",
+    "graphql": "^16.8.1",
     "gsap": "^3.12.5",
     "next": "14.1.4",
+    "next-sanity": "^7.1.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sanity": "^3.38.0",
+    "sanity-plugin-asset-source-unsplash": "^3.0.1",
+    "sanity-plugin-singleton-tools": "^1.0.1",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.38",
