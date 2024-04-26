@@ -16,6 +16,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.11",
     "@apollo/experimental-nextjs-app-support": "^0.10.0",
+    "@contentful/rich-text-html-renderer": "^16.3.5",
     "@prismicio/client": "^7.4.0",
     "@prismicio/next": "^1.5.0",
     "@prismicio/react": "^2.7.4",

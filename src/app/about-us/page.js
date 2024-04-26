@@ -1,31 +1,17 @@
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
-import { SectionMap, SectionPartners } from "~/devlink";
-import { Cta } from "~/devlink/Cta";
-
 import { getClient } from "@/services/client";
+import { getPage } from "@/services/queries";
+import { Cta, HeroSimpler, SectionMap, SectionPartners, SectionSlider, SectionSliderHistory, SectionSliderHistorySlide, SectionSliderSlide } from "~/devlink";
+import SectionsCollection from "../components/sectionsCollection";
 
-import { gql } from "@apollo/client";
-
-const query = gql`{
-  allEvent(sort: [{ name: ASC }]) {
-    name
-  }
-}
-`;
-
-
-export default async function Page() {
-  const { data } = await getClient().query({ query });
-
-  console.log(data);
-
-
+export default async function Page({params}) {
+  const { data } = await getClient().query({ query: getPage, variables: { slug: "about-us" } });
+  const page = data.pageCollection.items[0];
+  
   return <>
-    {/* <SliceZone slices={page.data.slices} components={components} /> */}
-    <SectionMap />
+    <HeroSimpler title={page.heroTitle} subtitle={page.heroSubtitle} body={page.heroDescription} buttonsSlot={false} />
+    <SectionsCollection items={page.sectionsCollection.items} />
+    <SectionMap subtitle={"map"} />
     <SectionPartners />
-    <Cta />
+    <Cta subtitle={page.ctaSubtitle} title={page.ctaTitle} buttonLink={{ href: page.ctaLink.slug }} />
   </>;
 }
