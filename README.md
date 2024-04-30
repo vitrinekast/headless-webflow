@@ -1,3 +1,11 @@
+# A Webflow Devlink exploration using various headless CMS's:
+- SanityCMS
+- Prismic (No longer in the repo)
+- Contentful (preferred solution)
+
+To run this project, clone & setup webflow devlink according to [their documentation](https://webflow.com/devlink).
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
