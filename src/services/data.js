@@ -20,7 +20,6 @@ export async function getCollection(uid) {
 }
 
 export async function getPlants(collectionid) {
-    console.log("getplants with collectionid: ", collectionid)
     return await client.getAllByType("plant", {
         filters: [prismic.filter.at(
             'my.plant.collection',

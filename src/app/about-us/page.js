@@ -1,17 +1,14 @@
 import { getClient } from "@/services/client";
 import { getPage } from "@/services/queries";
-import { Cta, HeroSimpler, SectionMap, SectionPartners, SectionSlider, SectionSliderHistory, SectionSliderHistorySlide, SectionSliderSlide } from "~/devlink";
-import SectionsCollection from "../components/sectionsCollection";
+import { HeroHome } from "~/devlink";
+import SectionsCollection from "@/app/components/sectionsCollection";
 
-export default async function Page({params}) {
+export default async function Page({ params }) {
   const { data } = await getClient().query({ query: getPage, variables: { slug: "about-us" } });
   const page = data.pageCollection.items[0];
   
   return <>
-    <HeroSimpler title={page.heroTitle} subtitle={page.heroSubtitle} body={page.heroDescription} buttonsSlot={false} />
-    <SectionsCollection items={page.sectionsCollection.items} />
-    <SectionMap subtitle={"map"} />
-    <SectionPartners />
-    <Cta subtitle={page.ctaSubtitle} title={page.ctaTitle} buttonLink={{ href: page.ctaLink.slug }} />
+    <HeroHome />
+    <SectionsCollection items={page.sectionsCollection.items}  />
   </>;
 }

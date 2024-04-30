@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { __404 } from '../../devlink/404';
+// import { __404 } from '../../devlink/404';
 
 export default function NotFound() {
     
-  return <__404 />
+  return <h2>page not found</h2>
 }

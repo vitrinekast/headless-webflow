@@ -1,10 +1,9 @@
-import { PrismicPreview } from '@prismicio/next'
-import { createClient, repositoryName } from '@/prismicio'
-import { Navbar, NavbarLink } from "../../devlink";
-import "../../devlink/global.css";
+import { createClient } from '@/prismicio';
+import { getClient } from '@/services/client';
 import { Footer } from '../../devlink/Footer';
-import { FooterLink } from '../../devlink/FooterLink';
-import { FooterLinkLegal } from '../../devlink/FooterLinkLegal';
+import "../../devlink/global.css";
+import { getSettings } from '@/services/queries';
+import { FooterLink } from '~/devlink';
 
 export const metadata = {
   title: "Create Next App",
@@ -12,37 +11,27 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-
-  const client = createClient();
-
-  const menu = await client.getSingle("main_navigation");
+  const { data } = await getClient().query({ query: getSettings });
+  const settings = data.navigationCollection.items[0];
 
   return (
     <html lang="en">
       <body>
-
-        <Navbar leftSlot={
-          menu.data.menu_items.map((link, index) => (
-            <NavbarLink key={index} label={link.label} link={{ href: link.link.url }}>
-            </NavbarLink>
-          ))
-        }></Navbar>
         {children}
-        <PrismicPreview repositoryName={repositoryName} />
-
         <Footer
-          menuLegalSlot={
-            menu.data.legal_links.map((link, index) => {
-              return <FooterLinkLegal key={index} label={link.label} link={{ href: link.link.url }}>
-              </FooterLinkLegal>
+          description={settings.aboutText}
+          // generalInquiries={settings.address.json}
+          // address={settings.getInTouchInfo.json}
+          menuSlot={settings.footerMenuCollection.items.map((link, index) => {
+            return <FooterLink key={index} label={link.title} />
+          })}
+          legalMenuSlot={
+            settings.footerLegalMenuCollection.items.map((link, index) => {
+              return <FooterLink key={index} label={link.title}>
+              </FooterLink>
             })
           }
-
-          menuSlot={
-            menu.data.links.map((link, index) => {
-              return <FooterLink key={index} label={link.label} link={{ href: link.link.url }}></FooterLink>
-            })
-          } meta={"add me to the cms"} />
+        />
       </body>
 
     </html>

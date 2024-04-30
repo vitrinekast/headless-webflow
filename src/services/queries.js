@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { headlineFields, sliderFields } from './fragments';
+import { headlineFields, pageLinkFields, sliderFields } from './fragments';
 
 export const getPage = gql`
   ${headlineFields}
@@ -36,3 +36,60 @@ export const getPage = gql`
     }
   }
 `;
+
+export const getLocations = gql`
+query {
+  contentTypeLocationCollection(order: name_ASC) {
+    items {
+      name
+      location {
+        lat
+        lon
+      }
+      description {
+        json
+      }
+    }
+  }
+}
+`
+export const getSettings = gql`
+  ${pageLinkFields}
+  query {
+    # add your query
+    navigationCollection(limit: 1) {
+      items {
+        address {
+          json
+        }
+        getInTouchInfo {
+          json
+        }
+        aboutText
+        footerMenuCollection {
+          items {
+            ... on Page {
+              ...pageLinkFields
+            }
+          }
+        }
+        mainNavigationCollection {
+          items {
+            ... on Page {
+              ...pageLinkFields
+            }
+          }
+        }
+        footerLegalMenuCollection {
+          items {
+            ... on Page {
+              ...pageLinkFields
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+

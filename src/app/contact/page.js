@@ -6,7 +6,7 @@ import SectionsCollection from "../components/sectionsCollection";
 export default async function Page({params}) {
   const { data } = await getClient().query({ query: getPage, variables: { slug: "contact" } });
   const page = data.pageCollection.items[0];
-  
+  return false
   return <>
     <HeroSimpler title={page.heroTitle} subtitle={page.heroSubtitle} body={page.heroDescription} buttonsSlot={false} />
     <SectionsCollection items={page.sectionsCollection.items} />

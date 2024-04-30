@@ -1,5 +1,11 @@
 import { gql } from '@apollo/client';
 
+export const pageLinkFields = gql`
+    fragment pageLinkFields on Page {
+        title
+        slug
+    }
+`
 export const headlineFields = gql`
     fragment headlineFields on Headline {
         title
@@ -20,6 +26,11 @@ export const sliderFields = gql`
         }
         collection {
             name
+            plantsCollection {
+                items {
+                    name
+                }
+            }
         }
         slidesCollection {
             items {

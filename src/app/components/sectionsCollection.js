@@ -1,38 +1,41 @@
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { SectionContent, SectionSlider, SectionSliderHistory, SectionSliderHistorySlide, SectionSliderSlide } from "~/devlink";
+import { Content, DuoslideSlide, SlidePlant, SliderCollection, SliderDuo } from "~/devlink";
 
 export default function SectionsCollection({ items }) {
-
+    if (!items) {
+        return false;
+    }
     return <>
         {
             items.map((section, index) => {
-
                 switch (section.__typename) {
                     case 'Headline':
-                        return <SectionContent title={section.title} subtitle={section.subtitle} description={documentToHtmlString(section.description.json)} key={index} />
+                        return <Content key={index} title={section.title} subtitle={section.subtitle} description={documentToHtmlString(section.description.json)} />
+                        break;
                     case 'SliderCollection':
+
                         switch (section.theme) {
-                            case "History":
-                                return <SectionSliderHistory key={index} {...section} sliderSlot={
-                                    section.slidesCollection.items.map((slide, index) => {
-                                        return <SectionSliderHistorySlide key={index} {...slide} />
+                            
+                            case "Duo":
+                                return <SliderDuo key={index} title={section.title} subtitle={section.subtitle} description={documentToHtmlString(section.description.json)} slot={
+                                    section.collection.plantsCollection.items.map((plant, index) => {
+                                        return <DuoslideSlide key={index} title={plant.name} subtitle={section.collection.name} />
                                     })
-                                } />;
-                                break;
-                            case "Content":
-                                return <SectionSlider key={index} {...section} sliderSlot={
-                                    section.slidesCollection.items.map((slide, index) => {
-                                        return <SectionSliderSlide key={index} {...slide} />
+                                } />
+                            case "Dark":
+                                return <SliderCollection key={index} title={section.title} subtitle={section.subtitle} description={documentToHtmlString(section.description.json)} slot={
+                                    section.collection.plantsCollection.items.map((plant, index) => {
+                                        return <SlidePlant key={index} title={plant.name} subtitle={section.collection.name} />
                                     })
-                                } />;
+                                } />
                                 break;
                             default:
-                                return <h2>unmapped sliuder for {section.theme}</h2>
+                                return <h2 key={index}>unmapped sliuder for {section.theme}</h2>
                                 break;
                         }
 
                     default:
-                        return <h2>Unmapped section for {section.__typename}</h2>
+                        return <h2 key={index}>Unmapped section for {section.__typename}</h2>
                 }
             })
         }

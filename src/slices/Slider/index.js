@@ -3,10 +3,9 @@
 import * as prismicH from '@prismicio/client';
 import Splide from '@splidejs/splide';
 import '@splidejs/splide/dist/css/splide-core.min.css';
-import { useEffect, useRef } from 'react';
-import { SectionSlider, SectionSliderHistory, SectionSliderHistorySlide, SectionSliderSlide } from '~/devlink';
 
 const SliderSlice = ({ slice }) => {
+  return false
   const sliderRef = useRef(null);
   const progressRef = useRef(null);
 

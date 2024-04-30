@@ -1,20 +1,16 @@
-"use client";
+import { getClient } from "@/services/client";
+import { getLocations, getPage } from "@/services/queries";
+import { HeroHome, Map, Partners } from "~/devlink";
+import MapSection from "./components/map";
+import SectionsCollection from "./components/sectionsCollection";
 
-import { getHomepage } from "@/services/data";
-import { components } from "@/slices";
-import { SliceZone } from "@prismicio/react";
-import "../../devlink/global.css";
-
-
-export default async function Home() {
-  const home = await getHomepage();
-
-  return (
-    <>
-
-      <main>
-        <SliceZone slices={home.data.slices} components={components} />
-      </main>
-    </>
-  );
+export default async function Home({ params }) {
+  const { data } = await getClient().query({ query: getPage, variables: { slug: "home" } });
+  const page = data.pageCollection.items[0];
+  return <>
+    <HeroHome />
+    <SectionsCollection items={page.sectionsCollection.items}  />
+    <MapSection />
+    <Partners />
+  </>;
 }
